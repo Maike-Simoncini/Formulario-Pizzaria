@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-weight: bold;
+        }
+
+        body {
+            background-image: url(pizza.jpg);
+            width: 100%;
+            height: auto;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            border: #000000;
+            color: #ffffff;
+        }
+
+        header {
+            font-size: 30px;
+            background-color: #3e3a3a;
+            padding: 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            padding: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pedido Pizza</h1>
+    </header>
+    <br><br><br>
+    <nav>
+        <form action="teste" method="get">
+            Nome: <input type="text" name="NOME"> <br>
+            <br>
+            Email: <input type="email" name="email"> <br>
+            <br>
+            Tamanho:<br><br>
+            <input type="radio" name="TAMANHO" value="P"> Pequeno
+            <input type="radio" name="TAMANHO" value="M"> Médio
+            <input type="radio" name="TAMANHO" value="G"> Grande <br>
+            <br>
+            Sabor: <select name="sabor">
+                <option></option>
+                <option>Calabresa</option>
+                <option>Queijos</option>
+                <option>Presunto</option>
+                <option>Napolitana</option>
+            </select> <br>
+            <br>
+            Adicionais: <input type="checkbox" name="borda" value="sim"> Borda
+            <input type="checkbox" name="borda" value="sim"> Queijo <br>
+            <br>
+            Data de Entrega: <input type="date" name="dataentrega">
+            <br> <br>
+            Comentarios e Sugestões:
+            <br><br>
+            <textarea name="mensagem" rows="10" cols="30"></textarea>
+            <br><br>
+            <input type="submit">
+            <br>
+    </nav>
+    </form>
+</body>
+</html>
