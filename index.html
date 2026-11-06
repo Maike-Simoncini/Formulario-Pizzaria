@@ -1,81 +1,218 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pizzaria Delícia - Faça seu Pedido</title>
+    <!-- Fonte Google Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-weight: bold;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            background-image: url(pizza.jpg);
-            width: 100%;
-            height: auto;
+            /* Imagem de fundo com overlay escuro para realçar o contraste */
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('pizza.jpg') no-repeat center center/cover;
+            min-height: 100vh;
+            display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            font-family: Arial, sans-serif;
-            border: #000000;
+            padding: 40px 20px;
             color: #ffffff;
-            background-size: cover;
-            min-height: 100vh;
+        }
+
+        /* Card do formulário com efeito de vidro (Glassmorphism) */
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
         }
 
         header {
-            font-size: 30px;
-            background-color: #3e3a3a;
-            padding: 15px;
+            text-align: center;
+            margin-bottom: 25px;
         }
 
-        nav ul li a {
-            color: white;
-            padding: 5px;
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff9f43;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
         }
 
+        header p {
+            font-size: 0.95rem;
+            color: #ddd;
+        }
+
+        /* Estilização dos grupos de campos */
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #f1f1f1;
+        }
+
+        /* Entradas de texto, e-mail, data, select e textarea */
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        /* Ajuste de cor das opções do Select para ficarem visíveis no menu suspenso */
+        select option {
+            background-color: #222;
+            color: #fff;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="date"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #ff9f43;
+            box-shadow: 0 0 8px rgba(255, 159, 67, 0.4);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        /* Estilização para Radio e Checkboxes */
+        .options-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-top: 5px;
+            flex-wrap: wrap;
+        }
+
+        .options-group label {
+            font-weight: 400;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.95rem;
+        }
+
+        /* Botão de Envio */
+        .btn-submit {
+            width: 100%;
+            background: #ff9f43;
+            color: #1e1e1e;
+            border: none;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background: #ee5253;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(238, 82, 83, 0.4);
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Pedido Pizza</h1>
-    </header>
-    <br><br><br>
-    <nav>
+
+    <div class="container">
+        <header>
+            <h1>🍕 Pedido de Pizza</h1>
+            <p>Monte o seu pedido rapidamente abaixo</p>
+        </header>
+
         <form action="teste" method="get">
-            Nome: <input type="text" name="NOME"> <br>
-            <br>
-            Email: <input type="email" name="email"> <br>
-            <br>
-            Tamanho:<br><br>
-            <input type="radio" name="TAMANHO" value="P"> Pequeno
-            <input type="radio" name="TAMANHO" value="M"> Médio
-            <input type="radio" name="TAMANHO" value="G"> Grande <br>
-            <br>
-            Sabor: <select name="sabor">
-                <option></option>
-                <option>Calabresa</option>
-                <option>Queijos</option>
-                <option>Presunto</option>
-                <option>Napolitana</option>
-            </select> <br>
-            <br>
-            Adicionais: <input type="checkbox" name="borda" value="sim"> Borda
-            <input type="checkbox" name="borda" value="sim"> Queijo <br>
-            <br>
-            Data Entrega: <input type="date" name="dataentrega">
-            <br> <br>
-            Comentarios e Sugestões:
-            <br><br>
-            <textarea name="mensagem" rows="10" cols="30"></textarea>
-            <br><br>
-            <input type="submit">
-            <br>
-    </nav>
-    </form>
+            <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" name="NOME" placeholder="Seu nome completo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <label>Tamanho da Pizza</label>
+                <div class="options-group">
+                    <label><input type="radio" name="TAMANHO" value="P"> Pequeno</label>
+                    <label><input type="radio" name="TAMANHO" value="M"> Médio</label>
+                    <label><input type="radio" name="TAMANHO" value="G" checked> Grande</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="sabor">Sabor</label>
+                <select id="sabor" name="sabor" required>
+                    <option value="" disabled selected>Selecione um sabor...</option>
+                    <option value="Calabresa">Calabresa</option>
+                    <option value="Queijos">Quatro Queijos</option>
+                    <option value="Presunto">Presunto</option>
+                    <option value="Napolitana">Napolitana</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Adicionais</label>
+                <div class="options-group">
+                    <label><input type="checkbox" name="adicionais" value="borda"> Borda Recheada</label>
+                    <label><input type="checkbox" name="adicionais" value="queijo"> Extra Queijo</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dataentrega">Data da Entrega</label>
+                <input type="date" id="dataentrega" name="dataentrega" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mensagem">Comentários e Sugestões</label>
+                <textarea id="mensagem" name="mensagem" rows="4" placeholder="Alguma observação no pedido? Ex: sem cebola..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Fazer Pedido</button>
+        </form>
+    </div>
+
 </body>
 </html>
